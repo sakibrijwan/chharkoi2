@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myShopkeeperLabel" data-translate="chharkoiApp.shopkeeper.home.createOrEditLabel">Create or edit a Shopkeeper</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.shopkeeper.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.shopkeeper.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.shopkeeper.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.shopkeeper.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                    ng-model="vm.shopkeeper.location"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.shopType" for="field_shopType">Shop Type</label>
+            <input type="text" class="form-control" name="shopType" id="field_shopType"
+                    ng-model="vm.shopkeeper.shopType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="vm.shopkeeper.phone"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.shopkeeper.email"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.webAddress" for="field_webAddress">Web Address</label>
+            <input type="text" class="form-control" name="webAddress" id="field_webAddress"
+                    ng-model="vm.shopkeeper.webAddress"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.shopTin" for="field_shopTin">Shop Tin</label>
+            <input type="text" class="form-control" name="shopTin" id="field_shopTin"
+                    ng-model="vm.shopkeeper.shopTin"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setShopLogo($file, vm.shopkeeper)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.shopLogo" for="field_shopLogo">Shop Logo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.shopkeeper.shopLogoContentType + ';base64,' + vm.shopkeeper.shopLogo}}" style="max-height: 100px;" ng-if="vm.shopkeeper.shopLogo"/>
+                <div ng-if="vm.shopkeeper.shopLogo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.shopkeeper.shopLogoContentType}}, {{vm.byteSize(vm.shopkeeper.shopLogo)}}</span>
+                    <button type="button" ng-click="vm.shopkeeper.shopLogo=null;vm.shopkeeper.shopLogoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setShopLogo($file, vm.shopkeeper)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="shopLogo" id="field_shopLogo"
+                    ng-model="vm.shopkeeper.shopLogo"
+                     />
+            <input type="hidden" class="form-control" name="shopLogoContentType" id="field_shopLogoContentType"
+                    ng-model="vm.shopkeeper.shopLogoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.shopkeeper.date" for="field_date">Date</label>
+                <div class="input-group">
+                    <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.shopkeeper.date" is-open="vm.datePickerOpenStatus.date"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="chharkoiApp.shopkeeper.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.shopkeeper.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

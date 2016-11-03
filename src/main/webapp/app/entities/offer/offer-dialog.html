@@ -1,0 +1,154 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferLabel" data-translate="chharkoiApp.offer.home.createOrEditLabel">Create or edit a Offer</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.offer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.offer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.saleName" for="field_saleName">Sale Name</label>
+            <input type="text" class="form-control" name="saleName" id="field_saleName"
+                    ng-model="vm.offer.saleName"
+                    required />
+            <div ng-show="editForm.saleName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.saleName.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.offer.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                    ng-model="vm.offer.location"
+                    required />
+            <div ng-show="editForm.location.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.location.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.realPrice" for="field_realPrice">Real Price</label>
+            <input type="number" class="form-control" name="realPrice" id="field_realPrice"
+                    ng-model="vm.offer.realPrice"
+                    required />
+            <div ng-show="editForm.realPrice.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.realPrice.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.realPrice.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.salePrice" for="field_salePrice">Sale Price</label>
+            <input type="number" class="form-control" name="salePrice" id="field_salePrice"
+                    ng-model="vm.offer.salePrice"
+                    required />
+            <div ng-show="editForm.salePrice.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.salePrice.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.salePrice.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.salePercentage" for="field_salePercentage">Sale Percentage</label>
+            <input type="number" class="form-control" name="salePercentage" id="field_salePercentage"
+                    ng-model="vm.offer.salePercentage"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.startDate" for="field_startDate">Start Date</label>
+                <div class="input-group">
+                    <input id="field_startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.offer.startDate" is-open="vm.datePickerOpenStatus.startDate"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="chharkoiApp.offer.endDate" for="field_endDate">End Date</label>
+                <div class="input-group">
+                    <input id="field_endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.offer.endDate" is-open="vm.datePickerOpenStatus.endDate"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.endDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setProductImage($file, vm.offer)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="chharkoiApp.offer.productImage" for="field_productImage">Product Image</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.offer.productImageContentType + ';base64,' + vm.offer.productImage}}" style="max-height: 100px;" ng-if="vm.offer.productImage"/>
+                <div ng-if="vm.offer.productImage" class="help-block clearfix">
+                    <span class="pull-left">{{vm.offer.productImageContentType}}, {{vm.byteSize(vm.offer.productImage)}}</span>
+                    <button type="button" ng-click="vm.offer.productImage=null;vm.offer.productImageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setProductImage($file, vm.offer)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="productImage" id="field_productImage"
+                    ng-model="vm.offer.productImage"
+                     />
+            <input type="hidden" class="form-control" name="productImageContentType" id="field_productImageContentType"
+                    ng-model="vm.offer.productImageContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="chharkoiApp.offer.shopkeeper" for="field_shopkeeper">Shopkeeper</label>
+            <select class="form-control" id="field_shopkeeper" name="shopkeeper" ng-model="vm.offer.shopkeeper" ng-options="shopkeeper as shopkeeper.name for shopkeeper in vm.shopkeepers track by shopkeeper.name">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

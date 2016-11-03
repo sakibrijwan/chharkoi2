@@ -1,0 +1,100 @@
+<div>
+    <h2 data-translate="chharkoiApp.shopkeeper.home.title">Shopkeepers</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="shopkeeper.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="chharkoiApp.shopkeeper.home.createLabel">
+                        Create new Shopkeeper
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'chharkoiApp.shopkeeper.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.name">Name</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.address">Address</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.location">Location</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.shopType">Shop Type</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.phone">Phone</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.email">Email</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.webAddress">Web Address</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.shopTin">Shop Tin</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.shopLogo">Shop Logo</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.date">Date</span></th>
+                    <th><span data-translate="chharkoiApp.shopkeeper.user">User</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="shopkeeper in vm.shopkeepers track by shopkeeper.id">
+                    <td><a ui-sref="shopkeeper-detail({id:shopkeeper.id})">{{shopkeeper.id}}</a></td>
+                    <td>{{shopkeeper.name}}</td>
+                    <td>{{shopkeeper.address}}</td>
+                    <td>{{shopkeeper.location}}</td>
+                    <td>{{shopkeeper.shopType}}</td>
+                    <td>{{shopkeeper.phone}}</td>
+                    <td>{{shopkeeper.email}}</td>
+                    <td>{{shopkeeper.webAddress}}</td>
+                    <td>{{shopkeeper.shopTin}}</td>
+                    <td>
+                        <a ng-if="shopkeeper.shopLogo" ng-click="vm.openFile(shopkeeper.shopLogoContentType, shopkeeper.shopLogo)">
+                            <img data-ng-src="{{'data:' + shopkeeper.shopLogoContentType + ';base64,' + shopkeeper.shopLogo}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="shopkeeper.shopLogo">{{shopkeeper.shopLogoContentType}}, {{vm.byteSize(shopkeeper.shopLogo)}}</span>
+                    </td>
+                        <td>{{shopkeeper.date | date:'mediumDate'}}</td>
+                    <td>
+                        {{shopkeeper.user.id}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="shopkeeper-detail({id:shopkeeper.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="shopkeeper.edit({id:shopkeeper.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="shopkeeper.delete({id:shopkeeper.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

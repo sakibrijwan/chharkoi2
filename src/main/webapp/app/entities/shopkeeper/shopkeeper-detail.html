@@ -1,0 +1,68 @@
+
+<div>
+    <h2><span data-translate="chharkoiApp.shopkeeper.detail.title">Shopkeeper</span> {{vm.shopkeeper.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="chharkoiApp.shopkeeper.name">Name</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.name}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.address">Address</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.address}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.location">Location</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.location}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.shopType">Shop Type</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.shopType}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.phone">Phone</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.phone}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.email">Email</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.email}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.webAddress">Web Address</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.webAddress}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.shopTin">Shop Tin</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.shopTin}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.shopLogo">Shop Logo</span></dt>
+        <dd>
+            <div ng-if="vm.shopkeeper.shopLogo">
+                <a ng-click="vm.openFile(vm.shopkeeper.shopLogoContentType, vm.shopkeeper.shopLogo)">
+                    <img data-ng-src="{{'data:' + vm.shopkeeper.shopLogoContentType + ';base64,' + vm.shopkeeper.shopLogo}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.shopkeeper.shopLogoContentType}}, {{vm.byteSize(vm.shopkeeper.shopLogo)}}
+            </div>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.date">Date</span></dt>
+        <dd>
+            <span>{{vm.shopkeeper.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.shopkeeper.user">User</span></dt>
+        <dd>
+            {{vm.shopkeeper.user.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="shopkeeper-detail.edit({id:vm.shopkeeper.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

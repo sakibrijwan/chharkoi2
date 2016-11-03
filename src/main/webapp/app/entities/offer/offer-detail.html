@@ -1,0 +1,64 @@
+
+<div>
+    <h2><span data-translate="chharkoiApp.offer.detail.title">Offer</span> {{vm.offer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="chharkoiApp.offer.saleName">Sale Name</span></dt>
+        <dd>
+            <span>{{vm.offer.saleName}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.description">Description</span></dt>
+        <dd>
+            <span>{{vm.offer.description}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.location">Location</span></dt>
+        <dd>
+            <span>{{vm.offer.location}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.realPrice">Real Price</span></dt>
+        <dd>
+            <span>{{vm.offer.realPrice}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.salePrice">Sale Price</span></dt>
+        <dd>
+            <span>{{vm.offer.salePrice}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.salePercentage">Sale Percentage</span></dt>
+        <dd>
+            <span>{{vm.offer.salePercentage}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{vm.offer.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.endDate">End Date</span></dt>
+        <dd>
+            <span>{{vm.offer.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.productImage">Product Image</span></dt>
+        <dd>
+            <div ng-if="vm.offer.productImage">
+                <a ng-click="vm.openFile(vm.offer.productImageContentType, vm.offer.productImage)">
+                    <img data-ng-src="{{'data:' + vm.offer.productImageContentType + ';base64,' + vm.offer.productImage}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.offer.productImageContentType}}, {{vm.byteSize(vm.offer.productImage)}}
+            </div>
+        </dd>
+        <dt><span data-translate="chharkoiApp.offer.shopkeeper">Shopkeeper</span></dt>
+        <dd>
+            <a ui-sref="shopkeeper-detail({id:vm.offer.shopkeeper.id})">{{vm.offer.shopkeeper.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="offer-detail.edit({id:vm.offer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
