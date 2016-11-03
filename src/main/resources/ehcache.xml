@@ -46,5 +46,17 @@
         timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="com.chharkoi.app.domain.Shopkeeper"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.chharkoi.app.domain.Offer"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.chharkoi.app.domain.Offer.shopkeepers"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

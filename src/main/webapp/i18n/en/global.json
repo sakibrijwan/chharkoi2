@@ -8,6 +8,8 @@
             "entities": {
                 "main": "Entities",
                 "setting": "Setting",
+                "shopkeeper": "Shopkeeper",
+                "offer": "Offer",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

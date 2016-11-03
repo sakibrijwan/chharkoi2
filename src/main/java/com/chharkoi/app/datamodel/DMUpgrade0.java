@@ -16,6 +16,7 @@ public class DMUpgrade0 implements DMUpgrade {
     public void insertAuthorities(EntityManager em) {
         insertAuthority(em, "ROLE_ADMIN");
         insertAuthority(em, "ROLE_USER");
+        insertAuthority(em, "ROLE_SHOPKEEPER");
     }
 
     public void insertAuthority(EntityManager em, String authority) {
