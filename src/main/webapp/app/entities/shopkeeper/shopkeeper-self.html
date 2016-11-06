@@ -74,10 +74,27 @@
             </button>
         </div>
         <input type="hidden" class="form-control" name="shopLogo" id="field_shopLogo"
-               ng-model="vm.shopkeeper.shopLogo"
-            />
+               ng-model="vm.shopkeeper.shopLogo"/>
         <input type="hidden" class="form-control" name="shopLogoContentType" id="field_shopLogoContentType"
                ng-model="vm.shopkeeper.shopLogoContentType" />
+
+        <input id="pac-input" class="controls" type="text"
+               placeholder="Enter a location">
+        <div id="type-selector" class="controls">
+            <input type="radio" name="type" id="changetype-all" checked="checked">
+            <label for="changetype-all">All</label>
+
+            <input type="radio" name="type" id="changetype-establishment">
+            <label for="changetype-establishment">Establishments</label>
+
+            <input type="radio" name="type" id="changetype-address">
+            <label for="changetype-address">Addresses</label>
+
+            <input type="radio" name="type" id="changetype-geocode">
+            <label for="changetype-geocode">Geocodes</label>
+        </div>
+        <div id="map"></div>
+
     </div>
     <div class="form-group">
         <label class="control-label" data-translate="chharkoiApp.shopkeeper.date" for="field_date">Date</label>
@@ -90,12 +107,15 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label data-translate="chharkoiApp.shopkeeper.user" for="field_user">User</label>
-        <select class="form-control" id="field_user" name="user" ng-model="vm.shopkeeper.user" ng-options="user as user.id for user in vm.users track by user.id">
-            <option value=""></option>
-        </select>
-    </div>
+
+
+
+    <!--<div class="form-group">-->
+        <!--<label data-translate="chharkoiApp.shopkeeper.user" for="field_user">User</label>-->
+        <!--<select class="form-control" id="field_user" name="user" ng-model="vm.shopkeeper.user" ng-options="user as user.id for user in vm.users track by user.id">-->
+            <!--<option value=""></option>-->
+        <!--</select>-->
+    <!--</div>-->
 
 
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

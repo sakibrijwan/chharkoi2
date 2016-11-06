@@ -136,12 +136,24 @@
                     ng-model="vm.offer.productImageContentType" />
         </div>
 
-        <div class="form-group">
+        <div has-authority="ROLE_ADMIN" class="form-group">
             <label data-translate="chharkoiApp.offer.shopkeeper" for="field_shopkeeper">Shopkeeper</label>
             <select class="form-control" id="field_shopkeeper" name="shopkeeper" ng-model="vm.offer.shopkeeper" ng-options="shopkeeper as shopkeeper.name for shopkeeper in vm.shopkeepers track by shopkeeper.name">
                 <option value=""></option>
             </select>
         </div>
+
+        <div has-authority="ROLE_SHOPKEEPER" class="form-group">
+            <label data-translate="chharkoiApp.offer.shopkeeper" for="field_shopkeeper">Shopkeeper</label>
+            {{vm.offer.shopkeeper.name}}
+        </div>
+
+        <!--<div ng-hide="vm.show_as_admin" class="form-group">-->
+            <!--<label data-translate="chharkoiApp.offer.shopkeeper" for="field_shopkeeper">Shopkeeper</label>-->
+            <!--<select class="form-control" id="field_shopkeeper" name="shopkeeper" ng-model="vm.offer.shopkeeper">-->
+                <!--<option value=""></option>-->
+            <!--</select>-->
+        <!--</div>-->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
