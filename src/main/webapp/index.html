@@ -16,6 +16,7 @@
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
+    <link rel="stylesheet" href="content/css/location.css">
     <!-- endbuild -->
 </head>
 <body ng-app="chharkoiApp" ng-strict-di>
@@ -103,6 +104,10 @@
     <script src="app/entities/shopkeeper/shopkeeper.controller.js"></script>
     <script src="app/entities/shopkeeper/shopkeeper-self.controller.js"></script>
     <script src="app/entities/shopkeeper/shopkeeper-self.service.js"></script>
+<!--Added for Google map-->
+    <script src="app/ngAutocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfq58KhvD91bp2NpldNz453T6LaPlDvVI&libraries=places&sensor=false"></script>
+<!--Added for Google map-->
     <script src="app/entities/setting/setting-dialog.controller.js"></script>
     <script src="app/entities/setting/setting-detail.controller.js"></script>
     <script src="app/entities/setting/setting-delete-dialog.controller.js"></script>

@@ -21,6 +21,9 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.users = User.query();
+        vm.result1 = '';
+        vm.options1 = null;
+        vm.details1 = '';
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

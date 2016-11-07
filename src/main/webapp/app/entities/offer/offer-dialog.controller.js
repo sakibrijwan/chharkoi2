@@ -5,9 +5,9 @@
         .module('chharkoiApp')
         .controller('OfferDialogController', OfferDialogController);
 
-    OfferDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Offer', 'Shopkeeper'];
+    OfferDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Offer', 'Shopkeeper','ShopkeeperSelf'];
 
-    function OfferDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Offer, Shopkeeper) {
+    function OfferDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Offer, Shopkeeper,ShopkeeperSelf) {
         var vm = this;
 
         vm.offer = entity;
@@ -18,7 +18,8 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.shopkeepers = Shopkeeper.query();
-
+        vm.shopkeeper = ShopkeeperSelf.get();
+        vm.offer.shopkeeper=vm.shopkeeper;
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
