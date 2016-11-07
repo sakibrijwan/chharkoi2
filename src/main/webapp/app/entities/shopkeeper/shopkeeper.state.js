@@ -130,7 +130,7 @@
             parent: 'shopkeeper',
             url: '/new',
             data: {
-                authorities: ['ROLE_SHOPKEEPER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -168,7 +168,7 @@
             parent: 'shopkeeper',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_SHOPKEEPER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -193,7 +193,7 @@
             parent: 'shopkeeper',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_SHOPKEEPER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

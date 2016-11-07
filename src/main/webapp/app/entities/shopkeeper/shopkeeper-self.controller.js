@@ -8,9 +8,9 @@
         .module('chharkoiApp')
         .controller('ShopkeeperSelfController', ShopkeeperSelfController);
 
-    ShopkeeperSelfController.$inject = ['$timeout', '$scope', '$stateParams', 'DataUtils', 'entity', 'Shopkeeper', 'User', 'ShopkeeperSelf'];
+    ShopkeeperSelfController.$inject = ['$timeout', '$scope', '$stateParams', 'DataUtils', 'entity', 'Shopkeeper', 'User', 'ShopkeeperSelf', 'ShopType'];
 
-    function ShopkeeperSelfController ($timeout, $scope, $stateParams,  DataUtils, entity, Shopkeeper, User, ShopkeeperSelf) {
+    function ShopkeeperSelfController ($timeout, $scope, $stateParams,  DataUtils, entity, Shopkeeper, User, ShopkeeperSelf, ShopType) {
         var vm = this;
 
         vm.shopkeeper = ShopkeeperSelf.get();
@@ -24,6 +24,7 @@
         vm.result1 = '';
         vm.options1 = null;
         vm.details1 = '';
+        vm.shopTypes = ShopType.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

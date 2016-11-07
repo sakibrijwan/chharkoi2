@@ -8,6 +8,7 @@
     <include file="classpath:config/liquibase/changelog/20161031044928_added_entity_Setting.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161101065317_added_entity_Shopkeeper.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161102041814_added_entity_Offer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161107075005_added_entity_ShopType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20161101065317_added_entity_constraints_Shopkeeper.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161102041814_added_entity_constraints_Offer.xml" relativeToChangelogFile="false"/>

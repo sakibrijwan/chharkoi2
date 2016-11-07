@@ -5,9 +5,9 @@
         .module('chharkoiApp')
         .controller('ShopkeeperDialogController', ShopkeeperDialogController);
 
-    ShopkeeperDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Shopkeeper', 'User'];
+    ShopkeeperDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Shopkeeper', 'User', 'ShopType'];
 
-    function ShopkeeperDialogController ($timeout, $scope, $stateParams, $uibModalInstance,  DataUtils, entity, Shopkeeper, User) {
+    function ShopkeeperDialogController ($timeout, $scope, $stateParams, $uibModalInstance,  DataUtils, entity, Shopkeeper, User, ShopType) {
         var vm = this;
 
         vm.shopkeeper = entity;
@@ -18,6 +18,7 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.users = User.query();
+        vm.shopTypes = ShopType.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -10,6 +10,7 @@
                 "setting": "Setting",
                 "shopkeeper": "Shopkeeper",
                 "offer": "Offer",
+                "shopType": "Shop Type",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -29,9 +29,9 @@
     </form>
     <div class="form-group">
         <label class="control-label" data-translate="chharkoiApp.shopkeeper.shopType" for="field_shopType">Shop Type</label>
-        <input type="text" class="form-control" name="shopType" id="field_shopType"
-               ng-model="vm.shopkeeper.shopType"
-            />
+        <select class="form-control" id="field_shopType" name="shopkeeper" ng-model="vm.shopkeeper.shopType" ng-options="shopType as shopType.name for shopType in vm.shopTypes track by shopType.name">
+            <option value=""></option>
+        </select>
     </div>
     <div class="form-group">
         <label class="control-label" data-translate="chharkoiApp.shopkeeper.phone" for="field_phone">Phone</label>
@@ -104,7 +104,7 @@
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
         <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
     </button>
-    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
     </button>
 

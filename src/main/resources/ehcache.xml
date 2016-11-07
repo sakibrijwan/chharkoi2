@@ -58,5 +58,9 @@
         timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="com.chharkoi.app.domain.ShopType"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

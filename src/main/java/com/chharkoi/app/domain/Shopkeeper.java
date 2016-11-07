@@ -33,8 +33,8 @@ public class Shopkeeper implements Serializable {
     @Column(name = "location")
     private String location;
 
-    @Column(name = "shop_type")
-    private String shopType;
+    @ManyToOne
+    private ShopType shopType;
 
     @Column(name = "phone")
     private String phone;
@@ -108,16 +108,11 @@ public class Shopkeeper implements Serializable {
         this.location = location;
     }
 
-    public String getShopType() {
+    public ShopType getShopType() {
         return shopType;
     }
 
-    public Shopkeeper shopType(String shopType) {
-        this.shopType = shopType;
-        return this;
-    }
-
-    public void setShopType(String shopType) {
+    public void setShopType(ShopType shopType) {
         this.shopType = shopType;
     }
 
