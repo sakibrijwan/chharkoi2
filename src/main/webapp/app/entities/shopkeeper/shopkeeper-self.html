@@ -15,18 +15,34 @@
                ng-model="vm.shopkeeper.name"
             />
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">-->
+        <!--<label class="control-label" data-translate="chharkoiApp.shopkeeper.address" for="field_address">Address</label>-->
+        <!--<input type="text" class="form-control" name="address" id="field_address"-->
+               <!--ng-model="vm.shopkeeper.address"-->
+            <!--/>-->
+    <!--</div>-->
+    <!--<form id="form" role="form">-->
+        <!--<div class="form-group move-down">-->
+            <!--<label for="location">Location</label>-->
+            <!--<input type="text" id="location" class="form-control" ng-places ng-model="vm.result1" />-->
+        <!--</div>-->
+    <!--</form>-->
+
+    <fieldset  data-ng-repeat="choice in vm.choices">
         <label class="control-label" data-translate="chharkoiApp.shopkeeper.address" for="field_address">Address</label>
-        <input type="text" class="form-control" name="address" id="field_address"
+        <textarea type="text" class="form-control" ng-model="choice.name" name="" id="field_address"
                ng-model="vm.shopkeeper.address"
             />
-    </div>
-    <form id="form" role="form">
         <div class="form-group move-down">
             <label for="location">Location</label>
-            <input type="text" id="location" class="form-control" ng-places ng-model="vm.result1" />
+            <input type="text" id="location" ng-model="choice.location" location="" class="form-control" ng-places ng-model="vm.result1" />
         </div>
-    </form>
+
+        <button class="remove" ng-show="$last" ng-click="vm.removeChoice()">Remove Branch</button>
+    </fieldset>
+
+    <button class="btn btn-primary" ng-click="vm.addNewChoice()">Add Another Branch</button>
+
     <div class="form-group">
         <label class="control-label" data-translate="chharkoiApp.shopkeeper.shopType" for="field_shopType">Shop Type</label>
         <select class="form-control" id="field_shopType" name="shopkeeper" ng-model="vm.shopkeeper.shopType" ng-options="shopType as shopType.name for shopType in vm.shopTypes track by shopType.name">
@@ -89,8 +105,6 @@
                     </span>
         </div>
     </div>
-
-
 
 
     <!--<div class="form-group">-->

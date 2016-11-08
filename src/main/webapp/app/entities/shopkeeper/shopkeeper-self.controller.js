@@ -25,6 +25,22 @@
         vm.options1 = null;
         vm.details1 = '';
         vm.shopTypes = ShopType.query();
+        vm.addNewChoice=addNewChoice;
+        vm.removeChoice=removeChoice;
+        vm.choices = [{id: 'choice1'}];
+
+        //For addin and removing adderess fields
+         function addNewChoice() {
+            var newItemNo = vm.choices.length+1;
+            vm.choices.push({'id':'choice'+newItemNo});
+        }
+
+        function removeChoice() {
+            var lastItem = vm.choices.length-1;
+            vm.choices.splice(lastItem);
+        }
+
+//For addin and removing adderess fields
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
